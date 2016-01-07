@@ -381,6 +381,60 @@ class GitHubAPIManager {
                 completionHandler(error)
         } // end completion handler
     }
+    
+    // MARK: Create Gists  
+    
+    func createNewGist(description: String, isPublic: Bool, files: [File], completionHandler:
+        Result<Bool, NSError> -> Void)
+    {
+            let publicString: String
+            
+            if isPublic {
+                publicString = "true"
+            } else {
+                publicString = "false"
+            }
+            
+            var filesDictionary = [String: AnyObject]() // array of dict that holds file content
+            for file in files {
+                if let name = file.filename, content = file.content {
+                    filesDictionary[name] = ["content": content]
+                }
+            }
+            let parameters:[String: AnyObject] = [
+                "description": description,
+                "isPublic": publicString,
+                "files" : filesDictionary
+            ]
+            
+            alamofireManager.request(GistRouter.Create(parameters))
+                .isUnauthorized { response in
+                    if let unauthorized = response.result.value where unauthorized == true {
+                        let lostOAuthError = self.handleUnauthorizedResponse()
+                        completionHandler(.Failure(lostOAuthError))
+                        return // don't bother with .responseArray, we didn't get any data
+                    }
+                }
+                .response { (request, response, data, error) in
+                    if let error = error
+                    {
+                        print(error)
+                        completionHandler(.Success(false))
+                        return
+                    }
+                    
+                    // No Error, clear all previous received responses.
+                    self.clearCache()
+                    completionHandler(.Success(true))
+            }
+    }   
+    
+    
+    func clearCache() {
+        let cache = NSURLCache.sharedURLCache()
+        cache.removeAllCachedResponses()
+    }
+
 
     
     func checkUnauthorized(urlResponse: NSHTTPURLResponse) -> (NSError?)

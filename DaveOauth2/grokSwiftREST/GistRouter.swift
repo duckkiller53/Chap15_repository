@@ -90,7 +90,7 @@ enum GistRouter: URLRequestConvertible {
         }()
         
         let URLRequest = NSMutableURLRequest(URL: url)
-        print(URLRequest)
+        //print(URLRequest)
         
         // Set OAuth token if we have one
         if let token = GitHubAPIManager.sharedInstance.OAuthToken {

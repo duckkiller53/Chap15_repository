@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550A4D711C3EBB69008208B4 /* CreateGistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A4D701C3EBB69008208B4 /* CreateGistViewController.swift */; };
 		557E2DEA1C343F57000BE97C /* GistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557E2DE91C343F57000BE97C /* GistRouter.swift */; };
 		557E2DEE1C34427D000BE97C /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557E2DED1C34427D000BE97C /* GitHubAPIManager.swift */; };
 		55C762D21C3C12AB007E5055 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C762D11C3C12AB007E5055 /* File.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		550A4D701C3EBB69008208B4 /* CreateGistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGistViewController.swift; sourceTree = "<group>"; };
 		553D5918C64063AE07734093 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		557E2DE91C343F57000BE97C /* GistRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistRouter.swift; sourceTree = "<group>"; };
 		557E2DED1C34427D000BE97C /* GitHubAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIManager.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				CF3047241BD677970006CC45 /* MasterViewController.swift */,
 				CF3047261BD677970006CC45 /* DetailViewController.swift */,
 				CF20E0E71C0C988E0073B0CF /* LoginViewController.swift */,
+				550A4D701C3EBB69008208B4 /* CreateGistViewController.swift */,
 				CF3047281BD677970006CC45 /* Main.storyboard */,
 				CF30472B1BD677970006CC45 /* Assets.xcassets */,
 				CF30472D1BD677970006CC45 /* LaunchScreen.storyboard */,
@@ -250,6 +253,7 @@
 				CF3047251BD677970006CC45 /* MasterViewController.swift in Sources */,
 				557E2DEE1C34427D000BE97C /* GitHubAPIManager.swift in Sources */,
 				CF3047231BD677970006CC45 /* AppDelegate.swift in Sources */,
+				550A4D711C3EBB69008208B4 /* CreateGistViewController.swift in Sources */,
 				CF20D7B01C0B48180073B0CF /* AlamofireRequest+JSONSerializable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

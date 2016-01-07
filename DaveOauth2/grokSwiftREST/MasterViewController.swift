@@ -1,15 +1,12 @@
 //
-//  MasterViewController.swift
-//  grokSwiftREST
-//
-//  Created by Christina Moulton on 2015-10-20.
-//  Copyright © 2015 Teak Mobile Inc. All rights reserved.
+// David LaPorte's Version
 //
 
 import UIKit
 import PINRemoteImage
 import SafariServices
 import Alamofire
+
 
 class MasterViewController: UITableViewController, LoginViewDelegate, SFSafariViewControllerDelegate {
   
@@ -24,12 +21,18 @@ class MasterViewController: UITableViewController, LoginViewDelegate, SFSafariVi
     
     
     @IBAction func segmentedControlValueChanged(sender: AnyObject) {
+        
         // only show add button for my gists
         if (gistSegmentedControl.selectedSegmentIndex == 2) {
             self.navigationItem.leftBarButtonItem = self.editButtonItem()
+            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self,
+                action: "insertNewObject:")
+            self.navigationItem.rightBarButtonItem = addButton
         } else {
             self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil
         }
+        
         loadGists(nil)
     }
   
@@ -37,9 +40,7 @@ class MasterViewController: UITableViewController, LoginViewDelegate, SFSafariVi
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-    self.navigationItem.rightBarButtonItem = addButton
-    if let split = self.splitViewController {
+      if let split = self.splitViewController {
       let controllers = split.viewControllers
       self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
     }
@@ -253,10 +254,13 @@ class MasterViewController: UITableViewController, LoginViewDelegate, SFSafariVi
     // Dispose of any resources that can be recreated.
   }
   
-  func insertNewObject(sender: AnyObject) {
-    let alert = UIAlertController(title: "Not Implemented", message: "Can't create new gists yet, will implement later", preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-    self.presentViewController(alert, animated: true, completion: nil)
+    func insertNewObject(sender: AnyObject)
+    {
+        let createVC = CreateGistViewController(nibName: nil, bundle: nil)
+        
+        // Note: pushViewController loads it on stack.
+        self.navigationController?.pushViewController(createVC, animated: true)
+
   }
   
   // MARK: - Segues
