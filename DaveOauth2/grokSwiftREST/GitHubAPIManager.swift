@@ -423,6 +423,8 @@ class GitHubAPIManager {
                         return
                     }
                     
+                    print(response)
+                    
                     // No Error, clear all previous received responses.
                     self.clearCache()
                     completionHandler(.Success(true))
